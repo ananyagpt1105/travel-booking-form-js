@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travel Booking Form</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+h2 {
+    text-align: center;
+}
+form {
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+label {
+    font-weight: bold;
+}
+select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+</style>
+<script>
+function updateCities() {
+    var country = document.getElementById("country").value;
+    var cityList = document.getElementById("city");
+    cityList.innerHTML = "";
+    if (country == "usa") {
+        cityList.options[0] = new Option("New York", "New York");
+        cityList.options[1] = new Option("Los Angeles", "Los Angeles");
+        cityList.options[2] = new Option("Chicago", "Chicago");
+    } else if (country == "uk") {
+        cityList.options[0] = new Option("London", "London");
+        cityList.options[1] = new Option("Manchester", "Manchester");
+        cityList.options[2] = new Option("Birmingham", "Birmingham");
+    } else if (country == "india") {
+        cityList.options[0] = new Option("Delhi", "Delhi");
+        cityList.options[1] = new Option("Mumbai", "Mumbai");
+        cityList.options[2] = new Option("Chennai", "Chennai");
+    } else if (country == "australia") {
+        cityList.options[0] = new Option("Sydney", "Sydney");
+        cityList.options[1] = new Option("Melbourne", "Melbourne");
+        cityList.options[2] = new Option("Brisbane", "Brisbane");
+    }
+}
+function showSelection() {
+    var country = document.getElementById("country").value;
+    var city = document.getElementById("city").value;
+    alert("Country selected is: " + country.toUpperCase() + "\nCity selected is: " + city);
+}
+window.onload = function() {
+    updateCities();
+}
+</script>
+</head>
+<body>
+<h2>Travel Booking Form</h2>
+<form onsubmit="showSelection(); return false;">
+    <label>Select Country:</label><br>
+    <select id="country" onchange="updateCities()">
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+        <option value="india">India</option>
+        <option value="australia">Australia</option>
+    </select>
+    <br><br>
+    <label>Available Cities:</label><br>
+    <select id="city" size="4"></select>
+    <br><br>
+    <input type="submit" value="Book Now">
+</form>
+</body>
+</html>
+
